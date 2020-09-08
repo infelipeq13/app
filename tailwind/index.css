@@ -31,5 +31,5 @@
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 900;
-  src: url("/fonts/PlayfairDisplay-900.ttf") format("ttf");
+  src: url("/fonts/PlayfairDisplay-900.woff2") format("woff2");
 }
