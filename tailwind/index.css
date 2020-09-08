@@ -7,7 +7,7 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/Poppins-400.woff2") format("woff2");
+  src: url("/fonts/poppins-400.woff2") format("woff2");
 }
 
 @font-face {
@@ -15,7 +15,7 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/Poppins-500.woff2") format("woff2");
+  src: url("/fonts/poppins-500.woff2") format("woff2");
 }
 
 @font-face {
@@ -23,13 +23,18 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/Poppins-700.woff2") format("woff2");
+  src: url("/fonts/poppins-700.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: "Playfair Display";
+  font-family: "Merriweather";
   font-style: normal;
   font-weight: 900;
-  src: url("/fonts/PlayfairDisplay-900.woff2") format("woff2");
+  src: url("/fonts/merriweather-900.woff2") format("woff2");
+}
+
+button:focus,
+input:focus {
+  outline: 0;
 }
