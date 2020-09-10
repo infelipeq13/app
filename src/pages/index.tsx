@@ -3,7 +3,6 @@ import { useRef, useState } from "react";
 
 import { Button } from "src/components/Button";
 import { Box } from "src/components/Box";
-import { Container } from "src/components/Container";
 import { Dialog } from "src/components/Dialog";
 import { Divider } from "src/components/Divider";
 import { Field } from "src/components/Field";
@@ -14,12 +13,13 @@ enum Step {
   INITIAL,
   REWARD_SELECTION,
   CONFIRMATION_DIALOG,
+  EDIT_USER,
 }
 
 const HomePage = () => {
+  const leastDestructiveRef = useRef<HTMLButtonElement>(null);
   const [currentStep, setCurrentStep] = useState<Step>(Step.INITIAL);
   const [showDialog, setShowDialog] = useState(false);
-  const leastDestructiveRef = useRef<HTMLButtonElement>(null);
 
   const openDialog = () => {
     if (!showDialog) {
@@ -52,11 +52,17 @@ const HomePage = () => {
   return (
     <Layout
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur mauris ut ex fermentum."
-      illustrationName="medal"
+      illustrationName={currentStep === Step.EDIT_USER ? "edit-user" : "medal"}
       title={
-        <>
-          <span className="text-orange-500">Fidelizar</span> cliente
-        </>
+        currentStep === Step.EDIT_USER ? (
+          <>
+            <span className="text-orange-500">Atualizar</span> cadastro
+          </>
+        ) : (
+          <>
+            <span className="text-orange-500">Fidelizar</span> cliente
+          </>
+        )
       }
     >
       <Box color="orange">
@@ -90,7 +96,7 @@ const HomePage = () => {
                       isExpanded
                       type="button"
                       onClick={() => {
-                        setCurrentStep(Step.INITIAL);
+                        setCurrentStep(Step.EDIT_USER);
                       }}
                     >
                       Atualizar cadastro
@@ -139,8 +145,48 @@ const HomePage = () => {
               </Button>
             </>
           )}
+          {currentStep === Step.EDIT_USER && (
+            <>
+              <Field
+                columnSpan={5}
+                hint="apenas números"
+                isNumeric
+                label="Telefone celular"
+                name="mobileNumber"
+              />
+              <Field hint="recomendado" label="Nome completo" name="fullName" />
+              <Field
+                columnSpan={4}
+                hint="recomendado"
+                isNumeric
+                label="Aniversário"
+                name="birthday"
+              />
+              <Button
+                isExpanded
+                type="button"
+                onClick={() => {
+                  setCurrentStep(Step.INITIAL);
+                }}
+              >
+                Atualizar cadastro
+              </Button>
+            </>
+          )}
         </form>
       </Box>
+      {currentStep === Step.EDIT_USER && (
+        <Button
+          isExpanded
+          isSecondary
+          type="button"
+          onClick={() => {
+            setCurrentStep(Step.INITIAL);
+          }}
+        >
+          Retornar ao início
+        </Button>
+      )}
     </Layout>
   );
 };

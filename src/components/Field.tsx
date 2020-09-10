@@ -50,7 +50,7 @@ export const Field = forwardRef<Ref, Props>(
           htmlFor={inputId}
         >
           {label}
-          <span className="font-normal text-gray-800"> ({hint})</span>
+          {hint && <span className="font-normal text-gray-800"> ({hint})</span>}
         </label>
         <div className="grid grid-cols-8">
           <input
