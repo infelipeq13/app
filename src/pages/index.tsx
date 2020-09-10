@@ -1,13 +1,8 @@
-import {
-  AlertDialogLabel,
-  AlertDialogDescription,
-  AlertDialogOverlay,
-  AlertDialogContent,
-} from "@reach/alert-dialog";
 import confetti from "canvas-confetti";
 import { useRef, useState } from "react";
 
 import { Button } from "src/components/Button";
+import { Dialog } from "src/components/Dialog";
 
 enum Step {
   INITIAL,
@@ -18,12 +13,14 @@ enum Step {
 const HomePage = () => {
   const [currentStep, setCurrentStep] = useState<Step>(Step.INITIAL);
   const [showDialog, setShowDialog] = useState(false);
-  const cancelRef = useRef<HTMLButtonElement>(null);
+  const leastDestructiveRef = useRef<HTMLButtonElement>(null);
+
   const openDialog = () => {
     if (!showDialog) {
       setShowDialog(true);
     }
   };
+
   const closeDialog = () => {
     if (showDialog) {
       setShowDialog(false);
@@ -93,36 +90,43 @@ const HomePage = () => {
             currentStep
           ) && (
             <>
-              {showDialog && (
-                <AlertDialogOverlay leastDestructiveRef={cancelRef}>
-                  <AlertDialogContent>
-                    <AlertDialogLabel>
-                      <span className="text-orange-500">Parabéns!</span>
-                    </AlertDialogLabel>
-                    <AlertDialogDescription>
-                      <img
-                        alt=""
-                        className="w-40 h-40 mx-auto"
-                        src="/assets/handshake.png"
-                      />
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Etiam consectetur mauris ut ex fermentum.
-                    </AlertDialogDescription>
-                    <div className="mt-4">
-                      <Button
-                        isExpanded
-                        ref={cancelRef}
-                        type="button"
-                        onClick={() => {
-                          setCurrentStep(Step.INITIAL);
-                        }}
-                      >
-                        Retornar ao início
-                      </Button>
-                    </div>
-                  </AlertDialogContent>
-                </AlertDialogOverlay>
-              )}
+              <Dialog
+                controls={
+                  <>
+                    <Button
+                      isExpanded
+                      type="button"
+                      onClick={() => {
+                        setCurrentStep(Step.INITIAL);
+                      }}
+                    >
+                      Atualizar cadastro
+                    </Button>
+                    <Button
+                      ref={leastDestructiveRef}
+                      isExpanded
+                      isSecondary
+                      type="button"
+                      onClick={() => {
+                        setCurrentStep(Step.INITIAL);
+                      }}
+                    >
+                      Retornar ao início
+                    </Button>
+                  </>
+                }
+                isOpen={showDialog}
+                leastDestructiveRef={leastDestructiveRef}
+                title={<span className="text-orange-500">Parabéns!</span>}
+              >
+                <img
+                  alt=""
+                  className="w-40 h-40 mx-auto"
+                  src="/assets/handshake.png"
+                />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+                consectetur mauris ut ex fermentum.
+              </Dialog>
               <p className="text-sm font-medium leading-6 text-gray-900">
                 Telefone celular:{" "}
                 <span className="font-mono text-gray-800">(11) 99164-7998</span>
