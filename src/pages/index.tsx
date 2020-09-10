@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Button } from "src/components/Button";
 import { Dialog } from "src/components/Dialog";
 import { Field } from "src/components/Field";
+import { Illustration } from "src/components/Illustration";
 
 enum Step {
   INITIAL,
@@ -48,7 +49,7 @@ const HomePage = () => {
     <main className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="flex flex-col max-w-xs min-h-screen p-4 space-y-4 bg-white border border-gray-300 sm:min-h-full">
         <div className="flex flex-col items-center justify-center flex-grow text-center">
-          <img alt="" className="w-40 h-40" src="/assets/medal.png" />
+          <Illustration name="medal" />
           <h1 className="font-serif text-2xl font-black leading-9 text-gray-900">
             <span className="text-orange-500">Fidelizar</span> cliente
           </h1>
@@ -109,7 +110,7 @@ const HomePage = () => {
                 leastDestructiveRef={leastDestructiveRef}
                 title={<span className="text-orange-500">Parabéns!</span>}
               >
-                <img alt="" className="w-40 h-40" src="/assets/handshake.png" />
+                <Illustration name="handshake" />
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
                 consectetur mauris ut ex fermentum.
               </Dialog>
