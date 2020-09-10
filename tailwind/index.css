@@ -52,7 +52,7 @@ input:focus {
 }
 
 [data-reach-alert-dialog-description] {
-  @apply text-sm leading-6 text-gray-800;
+  @apply flex flex-col items-center text-sm leading-6 text-gray-800;
 }
 
 [data-reach-alert-dialog-label] {

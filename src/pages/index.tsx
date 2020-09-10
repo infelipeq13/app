@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 
 import { Button } from "src/components/Button";
 import { Dialog } from "src/components/Dialog";
+import { Field } from "src/components/Field";
 
 enum Step {
   INITIAL,
@@ -58,33 +59,22 @@ const HomePage = () => {
         </div>
         <form className="p-4 space-y-4 bg-orange-100 border border-orange-300">
           {currentStep === Step.INITIAL && (
-            <>
-              <div className="space-y-1">
-                <label
-                  className="text-sm font-medium leading-6 text-gray-900"
-                  htmlFor="amountPaid"
-                >
-                  Telefone celular{" "}
-                  <span className="font-normal text-gray-800">
-                    (apenas números)
-                  </span>
-                </label>
-                <div className="grid grid-cols-8">
-                  <input
-                    id="amountPaid"
-                    className="col-span-5 p-4 font-mono text-sm leading-6 text-gray-900 border border-r-0 border-gray-500 focus:border-orange-500 focus:shadow-outline-orange"
-                    type="text"
-                  />
-                  <Button
-                    className="col-span-3"
-                    iconName="search"
-                    onClick={() => {
-                      setCurrentStep(Step.REWARD_SELECTION);
-                    }}
-                  />
-                </div>
-              </div>
-            </>
+            <Field
+              addon={
+                <Button
+                  className="col-span-3"
+                  iconName="search"
+                  onClick={() => {
+                    setCurrentStep(Step.REWARD_SELECTION);
+                  }}
+                />
+              }
+              columnSpan={5}
+              hint="apenas números"
+              isNumeric
+              label="Telefone celular"
+              name="mobileNumber"
+            />
           )}
           {[Step.REWARD_SELECTION, Step.CONFIRMATION_DIALOG].includes(
             currentStep
@@ -119,37 +109,22 @@ const HomePage = () => {
                 leastDestructiveRef={leastDestructiveRef}
                 title={<span className="text-orange-500">Parabéns!</span>}
               >
-                <img
-                  alt=""
-                  className="w-40 h-40 mx-auto"
-                  src="/assets/handshake.png"
-                />
+                <img alt="" className="w-40 h-40" src="/assets/handshake.png" />
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
                 consectetur mauris ut ex fermentum.
               </Dialog>
-              <p className="text-sm font-medium leading-6 text-gray-900">
+              <span className="text-sm font-medium leading-6 text-gray-900">
                 Telefone celular:{" "}
                 <span className="font-mono text-gray-800">(11) 99164-7998</span>
-              </p>
+              </span>
               <div className="border-t border-orange-300" />
-              <div className="space-y-1">
-                <label
-                  className="text-sm font-medium leading-6 text-gray-900"
-                  htmlFor="amountPaid"
-                >
-                  Valor pago{" "}
-                  <span className="font-normal text-gray-800">
-                    (apenas reais)
-                  </span>
-                </label>
-                <div className="grid grid-cols-8">
-                  <input
-                    id="amountPaid"
-                    className="col-span-4 p-4 font-mono text-sm leading-6 text-gray-900 border border-gray-500 focus:border-orange-500 focus:shadow-outline-orange"
-                    type="text"
-                  />
-                </div>
-              </div>
+              <Field
+                columnSpan={4}
+                hint="apenas reais"
+                isNumeric
+                label="Valor pago"
+                name="amountPaid"
+              />
               <Button
                 isExpanded
                 type="button"
