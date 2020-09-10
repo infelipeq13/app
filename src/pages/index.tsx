@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Button } from "src/components/Button";
 import { Box } from "src/components/Box";
 import { Dialog } from "src/components/Dialog";
+import { Divider } from "src/components/Divider";
 import { Field } from "src/components/Field";
 import { Illustration } from "src/components/Illustration";
 
@@ -122,7 +123,7 @@ const HomePage = () => {
                     (11) 99164-7998
                   </span>
                 </span>
-                <div className="border-t border-orange-300" />
+                <Divider borderColor="orange" />
                 <Field
                   columnSpan={4}
                   hint="apenas reais"
