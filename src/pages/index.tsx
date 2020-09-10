@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 
 import { Button } from "src/components/Button";
 import { Box } from "src/components/Box";
+import { Container } from "src/components/Container";
 import { Dialog } from "src/components/Dialog";
 import { Divider } from "src/components/Divider";
 import { Field } from "src/components/Field";
@@ -49,7 +50,7 @@ const HomePage = () => {
 
   return (
     <main className="flex items-center justify-center min-h-screen bg-gray-100">
-      <Box className="flex flex-col max-w-xs min-h-screen space-y-4 sm:min-h-full">
+      <Container className="flex flex-col space-y-4">
         <div className="flex flex-col items-center justify-center flex-grow text-center">
           <Illustration name="medal" />
           <h1 className="font-serif text-2xl font-black leading-9 text-gray-900">
@@ -144,7 +145,7 @@ const HomePage = () => {
             )}
           </form>
         </Box>
-      </Box>
+      </Container>
     </main>
   );
 };
