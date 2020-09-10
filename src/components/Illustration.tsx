@@ -1,4 +1,4 @@
-export type IllustrationName = "edit-user" | "handshake" | "id" | "medal";
+export type IllustrationName = "edit-customer" | "handshake" | "id" | "medal";
 
 type Props = {
   name: IllustrationName;

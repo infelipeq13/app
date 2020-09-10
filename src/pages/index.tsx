@@ -52,7 +52,9 @@ const HomePage = () => {
   return (
     <Layout
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur mauris ut ex fermentum."
-      illustrationName={currentStep === Step.EDIT_USER ? "edit-user" : "medal"}
+      illustrationName={
+        currentStep === Step.EDIT_USER ? "edit-customer" : "medal"
+      }
       title={
         currentStep === Step.EDIT_USER ? (
           <>
