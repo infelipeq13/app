@@ -1,5 +1,7 @@
+export type IllustrationName = "handshake" | "id" | "medal";
+
 type Props = {
-  name: "handshake" | "id" | "medal";
+  name: IllustrationName;
 };
 
 export const Illustration = ({ name }: Props) => {

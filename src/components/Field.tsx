@@ -1,7 +1,7 @@
 import { useId } from "@reach/auto-id";
 import clsx from "clsx";
-import { forwardRef, ReactNode } from "react";
-import type { ComponentPropsWithoutRef } from "react";
+import { forwardRef } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 type ColumnSpan = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
